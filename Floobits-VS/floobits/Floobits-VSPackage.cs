@@ -91,9 +91,12 @@ namespace Floobits.Floobits_VS
                 mcs.AddCommand(menuToolWin);
 
                 // Create the command for the menu item.
-                CommandID subCommandID = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.cmdidTestSubCmd);
+                CommandID subCommandID = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.floobitsJoinWorkspaceByURLCommand);
                 MenuCommand subItem = new MenuCommand(new EventHandler(MenuItemCallback), subCommandID);
                 mcs.AddCommand(subItem);
+                CommandID subCommandID2 = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.floobitsShareSolutionCommand);
+                MenuCommand subItem2 = new MenuCommand(new EventHandler(MenuItemCallback), subCommandID);
+                mcs.AddCommand(subItem2);
             }
         }
         #endregion

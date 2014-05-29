@@ -12,8 +12,6 @@ namespace Floobits.Floobits_VS
 
 
         public static readonly Guid guidFloobits_VSCmdSet = new Guid(guidFloobits_VSCmdSetString);
-        public static readonly Guid guidTopLevelMenuCmdSet = new Guid("77225ee9-0b83-403d-b576-16f04d0ac090");
-
 
     };
 }
