@@ -34,6 +34,24 @@
     group; your package should define its own command set in order to avoid collisions  
     with command ids defined by other packages. -->
 
+    <Menus>
+      <Menu guid="guidFloobits_VSCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
+        <Parent guid="guidFloobits_VSCmdSet"
+                id="MyMenuGroup" />
+        <Strings>
+          <ButtonText>Floobits</ButtonText>
+          <CommandName>Floobits</CommandName>
+        </Strings>
+      </Menu>
+      
+      <Menu guid="guidFloobits_VSCmdSet" id="SubMenu" priority="0x0100" type="Menu">
+        <Parent guid="guidFloobits_VSCmdSet" id="SubMenuGroup"/>
+        <Strings>
+          <ButtonText>Join Workspace by URL</ButtonText>
+          <CommandName>Join Workspace by URL</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
     
     <!-- In this section you can define new menu groups. A menu group is a container for 
          other menus or buttons (commands); from a visual point of view you can see the 
@@ -41,10 +59,15 @@
          must be a menu. -->
     <Groups>
 
-      <Group guid="guidFloobits_VSCmdSet" id="MyMenuGroup" priority="0x0600">
+      <Group guid="guidFloobits_VSCmdSet" id="MyMenuGroup"
+priority="0x0000">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
       </Group>
       
+      <Group guid="guidFloobits_VSCmdSet" id="SubMenuGroup"
+priority="0x0000">
+        <Parent guid="guidFloobits_VSCmdSet" id="TopLevelMenu"/>
+      </Group>
 
 
     </Groups>
@@ -61,20 +84,13 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
 
-      <Button guid="guidFloobits_VSCmdSet" id="floobitsJoinURL" priority="0x0100" type="Button">
-        <Parent guid="guidFloobits_VSCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
-        <Strings>
-          <ButtonText>Join Workspace With a URL</ButtonText>
-        </Strings>
-      </Button>
-
-
-      <Button guid="guidFloobits_VSCmdSet" id="floobitsToolWindow" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+     
+      <Button guid="guidFloobits_VSCmdSet" id="cmdidTestSubCommand" priority="0x0000" type="Button">
+        <Parent guid="guidFloobits_VSCmdSet" id="SubMenuGroup" />
         <Icon guid="guidImages" id="bmpPic2" />
         <Strings>
-          <ButtonText>Floobits</ButtonText>
+          <CommandName>cmdidTestSubCommand</CommandName>
+          <ButtonText>Join Workspace by URL</ButtonText>
         </Strings>
       </Button>
 
@@ -104,11 +120,17 @@
     
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidFloobits_VSCmdSet" value="{1d2705dc-df9e-4290-acd9-7f93b367a005}">
-
+   
+      <IDSymbol name="TopLevelMenu" value="0x1021"/>
       <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="floobitsJoinURL" value="0x0100" />
-      <IDSymbol name="floobitsToolWindow" value="0x0101" />
+      
+      <IDSymbol name="SubMenu" value="0x1100"/>
+      <IDSymbol name="SubMenuGroup" value="0x1150"/>
+      
+      <IDSymbol name="cmdidTestSubCommand" value="0x0105"/>
     </GuidSymbol>
+
+   
     
     
     

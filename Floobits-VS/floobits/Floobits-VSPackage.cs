@@ -30,6 +30,8 @@ namespace Floobits.Floobits_VS
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     // This attribute registers a tool window exposed by this package.
+    // Autoload package
+    [ProvideAutoLoad("{F1536EF8-92EC-443C-9ED7-FDADF150DA82}")]
     [ProvideToolWindow(typeof(MyToolWindow))]
     [Guid(GuidList.guidFloobits_VSPkgString)]
     public sealed class Floobits_VSPackage : Package
@@ -83,14 +85,15 @@ namespace Floobits.Floobits_VS
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if ( null != mcs )
             {
-                // Create the command for the menu item.
-                CommandID menuCommandID = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.floobitsJoinURL);
-                MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID );
-                mcs.AddCommand( menuItem );
                 // Create the command for the tool window
                 CommandID toolwndCommandID = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.floobitsToolWindow);
                 MenuCommand menuToolWin = new MenuCommand(ShowToolWindow, toolwndCommandID);
-                mcs.AddCommand( menuToolWin );
+                mcs.AddCommand(menuToolWin);
+
+                // Create the command for the menu item.
+                CommandID subCommandID = new CommandID(GuidList.guidFloobits_VSCmdSet, (int)PkgCmdIDList.cmdidTestSubCmd);
+                MenuCommand subItem = new MenuCommand(new EventHandler(MenuItemCallback), subCommandID);
+                mcs.AddCommand(subItem);
             }
         }
         #endregion

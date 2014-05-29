@@ -10,6 +10,10 @@ namespace Floobits.Floobits_VS
         public const string guidFloobits_VSCmdSetString = "1d2705dc-df9e-4290-acd9-7f93b367a005";
         public const string guidToolWindowPersistanceString = "eb6a0650-08d7-472f-9ff5-e1fb98f78672";
 
+
         public static readonly Guid guidFloobits_VSCmdSet = new Guid(guidFloobits_VSCmdSetString);
+        public static readonly Guid guidTopLevelMenuCmdSet = new Guid("77225ee9-0b83-403d-b576-16f04d0ac090");
+
+
     };
 }
